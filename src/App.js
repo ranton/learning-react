@@ -45,28 +45,26 @@ const List = ({ list }) => {
   console.log('List renders');
 
   return (
-    <ul>
-      {list.map((item) => {
-        return (
-          <Item key={item.objectID} item={item} />
-        );
-      })}
+    <ul>      
+      {list.map(({ objectID, ...item }) => (
+        <Item key={objectID} {...item} />
+      ))}
     </ul>
   );
 }
 
-const Item = ({ item }) => {
+const Item = ({ title, url, author, num_comments, points }) => {
 
   console.log('Item renders');
 
   return (
-    <li key={item.objectID}>
+    <li>
       <span>
-        <a href={item.url}>{item.title}</a>
+        <a href={url}>{title}</a>
       </span>
-      <span>{item.author}</span>
-      <span>{item.num_comments}</span>
-      <span>{item.points}</span>
+      <span>{num_comments}</span>
+      <span>{author}</span>
+      <span>{points}</span>
     </li>
   );
 }
