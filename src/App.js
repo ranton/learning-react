@@ -31,7 +31,7 @@ const App = () => {
 const List = () => {
   return (
     <ul>
-      {list.map(function (item) {
+      {list.map((item) => {
         return (
           <li key={item.objectID}>
             <span>
@@ -48,10 +48,14 @@ const List = () => {
 }
 
 const Search = () => {
+  const handleChange = (event) => {
+    console.log(event.target.value);
+  };
+
   return (
     <div>
       <label htmlFor="search">Search: </label>
-      <input id="search" type="text" />
+      <input id="search" type="text" onChange={handleChange}/>
     </div>
   );
 }
